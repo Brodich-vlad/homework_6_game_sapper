@@ -1,0 +1,60 @@
+.main-page{
+    max-width: 140rem;
+    min-height: 100vh;
+    margin: 0 auto;
+    color: var(--main-color-black);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.151) 20%, rgba(0, 0, 0, 0.726)), url('../../img/pes-patron.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.main-title{
+    font-size: 2.3rem;
+    font-weight: 600;
+    color: white;
+    /* margin: 0 auto; */
+    text-align: end;
+    margin-right: 2%;
+}
+
+
+.main-section{
+    width: 90%;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--main-color-white);
+    font-weight: 500;
+    display: flex;
+    justify-content: end;
+    margin: 0 auto;
+}
+
+.main-section__info{
+    width: 40%;
+}
+.link-info{
+    padding: .3rem;
+    text-decoration: underline;
+    color: rgb(250, 250, 250);
+    transition: all .3s;
+}
+.link-btn{
+    width: 70%;
+    margin: 2rem auto;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 2rem;
+    text-align: center;
+    color: rgb(250, 250, 250);
+    border: 1px solid white;
+    border-radius: .3rem;
+    transition: all .3s;
+
+}
+.link-btn:hover,
+.link-info:hover{
+    color: rgb(190, 202, 241);
+}

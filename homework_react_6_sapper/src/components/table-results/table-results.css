@@ -1,0 +1,15 @@
+.table-results{
+    font-size: 1.8rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+.table-results__item{
+    margin: .3rem;
+}
+.table-results__item span{
+    font-size: 1.9rem;
+    font-weight: 600;
+}
