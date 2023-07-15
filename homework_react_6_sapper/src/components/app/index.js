@@ -6,19 +6,19 @@ import MainPage from "../../pages/main-page/main-page";
 import Settings from "../../pages/settings";
 import './app.css';
 import ErrorPage from "../../pages/error-page";
+import RulesPage from "../../pages/rules-page/rules-page";
 
 export function App(){
 
-    const clickNav=(e)=>{
-        console.log(e)
-    }
+  
     return(
         <>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={ <MainPage/>}></Route>
                     <Route path="/settings" element={ <Settings/> }></Route>
-                    <Route path="/game/:id" element={ <Game clickNav={clickNav}/> }></Route>
+                    <Route path="/game/:id" element={ <Game /> }></Route>
+                    <Route path="/rules" element={ <RulesPage/> }></Route>
                     <Route path="*" element={ <ErrorPage/> }></Route>
                 </Routes>
             </BrowserRouter>

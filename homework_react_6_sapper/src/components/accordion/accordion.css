@@ -1,0 +1,54 @@
+.accordion{
+    margin: 0.5rem auto;
+}
+
+.accordion-btn{
+    font-family: var(--font-open-sans);
+    width: 76%;
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: white;
+    background: none;
+    border: 1px solid white;
+    border-radius: .5rem;
+    margin: .5rem auto;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.accordion-btn:focus,
+.accordion-btn:hover{
+    opacity: .7;
+}
+
+
+
+.accordion-btn::after{
+    content: '\276F';
+    font-size: 2rem;
+    color: white;
+    position: absolute;
+    top: 25%;
+    right: 1rem;
+    transform: rotate(90deg);
+}
+
+.accordion-btn._open::after{
+    transform: rotate(-90deg);
+}
+
+.accordion-content{
+    max-height: 0;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.accordion-content._open{
+    max-height: 800rem;
+}
+

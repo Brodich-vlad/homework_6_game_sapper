@@ -3,86 +3,74 @@ import Header from '../../components/header/header';
 import './game.css';
 import GameSection from '../../components/game-section';
 import { useParams } from 'react-router';
-import TableResults from '../../components/table-results/table-results';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Title from '../../components/title';
 import Text from '../../components/text';
 
 import { dataPages } from '../../data-pages/data-pages';
-import { searchObjPageGame, changeResult, changeWin } from '../../methods';
+import { dataPagesMobile } from '../../data-pages/data-pages-mobile';
+import { searchObjPageGame} from '../../methods';
+import SettingsPanel from '../../components/settings-panel';
 
 
 export default function Game(){
 
+    // Отримання id сторінки.
     const {id} = useParams();
-    const objPage = searchObjPageGame (dataPages, id);
-    const paramGame = objPage.paramGame;
-   
-    const [mainGameOver,setMainGameOver] = useState(false)
-    const [mainGameWin, setMainGameWin] = useState(false)
-    const [endscreen, setEndscreen] = useState(false)
+ 
+    // Медіа запит Ширина екрану користувача.
+    const mediaQuery = window.matchMedia('(max-width: 960px)');
 
-    //Таблиця результатів гри.
-    const [result,setResult] = useState({
-        numMines:0,
-        numFlag:0,
-        numClear:0,
-        numNoClear:0,
-    })
+    const [useMobile, setUseMobile] = useState(mediaQuery.matches);
 
-    const endContent = {win: <span>✔ Вітаю ви виграли! <br/> Кількість замінованих теріторій в Україні стала меньша на <span>{result.numClear} кв/км.</span></span> , loose: '💣 Бум! Нажаль ви програли. Спробуйте ще.'};
-    const [infoA,setInfoA] = useState(null)
-    const [infoB,setInfoB] = useState(null)
-    const [infoC,setInfoC] = useState(null)
-    const [restart, setRestart] = useState(false)
+    // Знаходимо обєкт сторінки по id.
+    const [objPage, setObjPage] = useState(searchObjPageGame (useMobile ? dataPagesMobile : dataPages, id))
+    
+    // Забираємо обєкт налаштування гри.
+    const [paramGame, setParamGame] = useState(objPage.paramGame);
+    
+    // Стан віконця інформації.
+    const [infScreen, setInfoScreen] = useState(true);
 
-    useEffect(()=>{
-        setResult(changeResult(infoA,infoB,infoC))
-        if(mainGameWin === null){
-            setMainGameWin(false)
-            return
+    // Стан зміни параметрів гри якщо змынились параметри перезапустити гру.
+    const [flag, setFlag] = useState(false);
+
+    // Змінюемо обєкт сторінки якщо змінилась ширина екрана або id сторінки.
+    useEffect(() => {
+        function change  (ev) {
+            if (ev.target.matches) {
+            const arr = searchObjPageGame(dataPagesMobile, id)
+            setObjPage(arr)
+            setParamGame(arr.paramGame)  
+            }
+            else {
+            const arr = searchObjPageGame(dataPages, id)
+            setObjPage(arr)
+            setParamGame(arr.paramGame)
+            }
+            setUseMobile(ev.target.matches)
         }
-        else if(infoA){setMainGameWin(changeWin(infoA,infoB,infoC))}
-        
-    },[infoA, infoB, infoC, mainGameWin ])
+            mediaQuery.addEventListener('change', change,{once:true});
+        return () => {
+            mediaQuery.removeEventListener('change', change,{once:true});
+        };
+    },[mediaQuery,id]);
 
-    useEffect(()=>{
-        if(mainGameOver || mainGameWin){
-            setEndscreen(true)
-        }
-        else return
-    },[mainGameOver,mainGameWin])
-
-    const closeEndscren = () => {
-        setEndscreen(false)
+    //Функція Callback.
+    const infoCallback =(state)=>{
+        setInfoScreen(state)
     }
 
-
-    //Функція колбек.
-    // useCallback
-    const resultGame =(e, gameOver, rest)=>{
-        if(rest){setRestart(false)}
-        
-        if(gameOver){setMainGameOver(true)}
-
-        if(e.id === 0){
-            setInfoA(e)
-        }
-        else if(e.id === 1){
-            setInfoB(e)
-        }
-        else if(e.id === 2){
-            setInfoC(e)
-        }
+  // Функція  зміни параметрів гри якщо змынились параметри перезапустити гру.
+    const callbakSet = (s) =>{
+        setFlag(s)
     }
-   
-     //Функція кнопки рестарт гри.
-    const clickRestart = () =>{
-        setRestart(true)
-        setMainGameOver(false)
-        setEndscreen(false)
+ 
+   //Функція зміни налаштувань.
+    const clickOptions = (id) =>{
+        setFlag(true)
+        setParamGame({...paramGame,...id})
     }
-
 
     return(
         <div className={`game-page ${objPage.id}`}>
@@ -91,35 +79,16 @@ export default function Game(){
                 <section className='section-mined-field'>
                     <Title content={objPage.title} className={'game-page__title'}/>
 
-                    {result.numFlag || result.numClear>0||mainGameOver?null:<>
-                    <a href={objPage.infoLink}target="_blank" rel="noopener noreferrer"><Text className={'game-page__info'} content={objPage.info}/></a>
-                    <Text className={'game-page__text'} content={objPage.infoGame}/>
-                    </>}
-                  
-                    <TableResults numMines={result.numMines} numFlag={result.numFlag} numClear={result.numClear} numNoClear={result.numNoClear}/>
-                    <ul className='game-page__list'>
-                        <li className={infoA && !infoA.gameWin ? '':mainGameWin || mainGameOver?'':'__hide'}>
-                            {paramGame[0] && <GameSection  param={paramGame[0]} colback={resultGame} idEl={0} flagGameOver={infoA && !infoA.gameWin ? mainGameOver: false} flagRestart={restart} bomb={objPage.img[1]} bomb_1={objPage.img[0]}/>}
-                        </li>
+                    {id !=='use-game'? infScreen && <>
+                    <a className={'game-page__info-link'} href={objPage.infoLink}target="_blank" rel="noopener noreferrer"><Text className={'game-page__info'} content={objPage.info}/></a>
+                    <Text className={'game-page__text'} content={objPage.infoGame} /></>:null}
+                    
 
-                        <li className={infoB && !infoB.gameWin ? '':mainGameWin || mainGameOver?'':'__hide'}>
-                            {paramGame[1] &&  <GameSection  param={paramGame[1]} colback={resultGame} idEl={1} flagGameOver={infoB && !infoB.gameWin ? mainGameOver: false} flagRestart={restart} bomb={objPage.img[0]} bomb_1={objPage.img[1]}/>}
-                        </li>
+                    {<SettingsPanel param={paramGame} click={clickOptions} flag={infScreen} flagPage={id ==='use-game' ? true : false}/>}
 
-                        <li  className={infoC && !infoC.gameWin ? '':mainGameWin || mainGameOver?'':'__hide'}>
-                            {paramGame[2] &&  <GameSection  param={paramGame[2]} colback={resultGame} idEl={2} flagGameOver={infoC && !infoC.gameWin ? mainGameOver: false} flagRestart={restart} bomb={objPage.img[1]} bomb_1={objPage.img[0]}/>}
-                        </li>
-                    </ul>
 
-                   {result.numFlag || result.numClear > 0 || mainGameOver ? <button className={"btn-start"} onClick={()=>{
-                         clickRestart()
-                    }} type="button">Почати нову гру</button>:null}
+                    <GameSection  param={paramGame} bomb={objPage.img[1]} bomb_1={objPage.img[0]} callbak={infoCallback} flag={flag} callbakSet={callbakSet}/>
 
-                    {endscreen ? <div className="endscreen" onClick={() => {
-                      closeEndscren()  
-                    }}>{
-                mainGameWin?endContent.win:endContent.loose
-            }</div>  : null}
                 </section>
             </main>
             <Footer/>

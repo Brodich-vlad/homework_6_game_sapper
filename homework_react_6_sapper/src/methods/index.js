@@ -17,60 +17,18 @@ export const searchObjPageGame = (data,idPag)=>{
 	let objPage ='';
 	data.forEach(({id,title,info,paramGame,infoLink,infoGame,img})=>{
 		if(id === idPag){
-			objPage = {id,title,info,paramGame,infoLink,infoGame,img}
+			if(idPag === 'use-game'){
+				objPage = {id,title,info,paramGame,img}
+			}
+			else objPage = {id,title,info,paramGame,infoLink,infoGame,img}
+			
 		}
 	})
 	return objPage
 }
 
-//Функція підрахунку результатів.
-export const changeResult = (a,b,c) =>{
-	const newArr ={
-	 numMines:0,
-	 numFlag:0,
-	 numClear:0,
-	 numNoClear:0,
-	}
-
-	if(a){
-		 newArr.numMines  += a.numMines;
-		 newArr.numFlag += a.numFlag;
-		 newArr.numClear += a.numClear;
-		 newArr.numNoClear += a.numNoClear;
-	}
-	if(b){
-		 newArr.numMines  += b.numMines;
-		 newArr.numFlag += b.numFlag;
-		 newArr.numClear += b.numClear;
-		 newArr.numNoClear += b.numNoClear;
-	 }
-	 if(c){
-		 newArr.numMines  += c.numMines;
-		 newArr.numFlag += c.numFlag;
-		 newArr.numClear += c.numClear;
-		 newArr.numNoClear += c.numNoClear;
-	 }
-	return newArr
- }
-
-//Функція підрахунку результатів перемог.
-export const changeWin = (a,b,c)=>{
-	let result = false;
-
-	let newA = false;
-	let newB = false;
-	let newC = false;
-	a === null? newA = true: newA = a.gameWin;
-	b === null? newB = true: newB = b.gameWin;
-	c === null? newC = true: newC = c.gameWin;
-	newA && newB && newC?result = true : result = false;
-
-	return result        
-}
-
-
 // Функція зміни обєкту табло-інформаціїї гри.
-export const changeInfoTable = (gameArr,idEl) =>{
+export const changeInfoTable = (gameArr) =>{
 	let cauntMines = 0,
 	cauntFlag = 0,
 	cauntClear = 0,
@@ -91,20 +49,19 @@ export const changeInfoTable = (gameArr,idEl) =>{
 	})
 
 	let newTable = {
-		id:idEl,
 		numMines:cauntMines,
         numFlag:cauntFlag,
         numClear:cauntClear,
         numNoClear:length - cauntMines,
-        gameWin:length - cauntMines === cauntClear ? true: false,
+        gameWin:length - cauntMines === cauntClear && cauntMines === cauntFlag ? true  : false,
 	}
 
 	return newTable
 }
 
 // Функція створення обєкту гри.
-export function createGame(numColumn,numBomb,cellSize){
-
+export function createGame(numColumn, numBomb, cellSize, numTerms = numColumn){
+	// let numTerms = 10;
 	let x = 0,
 	y = 0,
 	numberColors= ['#3498db', '#2ecc71', '#e74c3c', '#9b59b6', '#f1c40f', '#1abc9c', '#34495e', '#7f8c8d',],
@@ -113,10 +70,9 @@ export function createGame(numColumn,numBomb,cellSize){
 
 	const objGaame ={
 		elements :[],
-		boardStyle:{width : numColumn * cellSize + 'rem'},
 	}
 
-	for (let i = 0; i < numColumn * numColumn; i++) {
+	for (let i = 0; i < numColumn * numTerms; i++) {
 		const arr = {
 			style:{width :cellSize + 'rem',height : cellSize + 'rem',fontSize : cellSize/1.5 + 'rem'},
 			className:'tile',
@@ -136,13 +92,13 @@ export function createGame(numColumn,numBomb,cellSize){
 			if (x > 0) numbers.push(`${x-1},${y}`);
 			if (x < numColumn - 1) numbers.push(`${x+1},${y}`);
 			if (y > 0) numbers.push(`${x},${y-1}`);
-			if (y < numColumn - 1) numbers.push(`${x},${y+1}`);
+			if (y < numTerms - 1) numbers.push(`${x},${y+1}`);
 			
 			if (x > 0 && y > 0) numbers.push(`${x-1},${y-1}`);
-			if (x < numColumn - 1 && y < numColumn - 1) numbers.push(`${x+1},${y+1}`);
+			if (x < numColumn - 1 && y < numTerms - 1) numbers.push(`${x+1},${y+1}`);
 			
 			if (y > 0 && x < numColumn - 1) numbers.push(`${x+1},${y-1}`);
-			if (x > 0 && y < numColumn - 1) numbers.push(`${x-1},${y+1}`);
+			if (x > 0 && y < numTerms - 1) numbers.push(`${x-1},${y+1}`);
 		}
 
 		x++;
@@ -172,10 +128,10 @@ export function createGame(numColumn,numBomb,cellSize){
 
 
 /* Перевірити сусідні комірки */
-export function checkNeighborCells (dataArr, coordinate){
-    const newArr = dataArr;
+export function checkNeighborCells (dataArr, elem, dbl){
+    let newArr = [...dataArr];
 	// Координати натиснутої клітинки.
-	let coords = coordinate.split(','),
+	let coords = elem.coordinates.split(','),
 	x = parseInt(coords[0]),
 	y = parseInt(coords[1]),
 	// Координати сусідніх клітинок.
@@ -189,27 +145,63 @@ export function checkNeighborCells (dataArr, coordinate){
 	cellUL = `${x-1},${y-1}`;
 
 	/* Перевіряємо сусідні клітинки змінюємо масив гри.*/
-	newArr.forEach((el) => {
-		if(!el.checked && !el.databomb){
-			if(el.coordinates === cellU || 
-				el.coordinates === cellUR ||
-				el.coordinates === cellR ||
-				el.coordinates === cellDR ||
-				el.coordinates === cellD ||
-				el.coordinates === cellDL ||
-				el.coordinates === cellL ||
-				el.coordinates === cellUL
-				){
-				if(el.dataNum === 0){ 
-					el.checked = true;
-				}
-				else {
-					el.checked = true;
-					el.content = el.dataNum;
+
+	if(dbl){
+		dataArr.forEach((el) => {
+			if(!el.checked && !el.databomb){
+				if(el.coordinates === cellU || 
+					el.coordinates === cellUR ||
+					el.coordinates === cellR ||
+					el.coordinates === cellDR ||
+					el.coordinates === cellD ||
+					el.coordinates === cellDL ||
+					el.coordinates === cellL ||
+					el.coordinates === cellUL
+					){	
+					if(el.dataNum === elem.dataNum){ 
+						el.checked = true;
+						el.content = el.dataNum;
+					}
 				}
 			}
-		}
-	});
+		});
+	}
+	else {
+		dataArr.forEach((el) => {
+			if(!el.checked && !el.databomb){
+				if(el.coordinates === cellU || 
+					el.coordinates === cellUR ||
+					el.coordinates === cellR ||
+					el.coordinates === cellDR ||
+					el.coordinates === cellD ||
+					el.coordinates === cellDL ||
+					el.coordinates === cellL ||
+					el.coordinates === cellUL
+					){
+					if(el.dataNum === 0){ 
+						el.checked = true;
+					}
+					else {
+						el.checked = true;
+						el.content = el.dataNum;
+					}
+				}
+			}
+		});
+	}
+
 	/* Повертаємо змінений масив гри.*/
     return newArr
 }
+
+// Функція створення зірок сторінки 404.
+export const createStars = (className,num) =>{
+	const stars = []
+	for (let i = 0; i < num; i++) {
+		stars.push(<div key={getId(i)} className={className}></div>) 
+	}
+	return stars
+}
+
+  // Ширина екрану користувача.
+export const useMobile = window.innerWidth < 960 ? true : false;

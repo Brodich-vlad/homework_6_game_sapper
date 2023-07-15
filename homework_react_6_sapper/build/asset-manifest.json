@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d17bd4e0.css",
+    "main.js": "/static/js/main.7e3634bc.js",
+    "static/media/map.png": "/static/media/map.71eb894bd1a208edb05e.png",
+    "static/media/icon-trophy.gif": "/static/media/icon-trophy.ff0078c2c7cc5e4dd6f9.gif",
+    "static/media/screen_4.png": "/static/media/screen_4.d971009ab64098ca4ca3.png",
+    "static/media/screen_3.png": "/static/media/screen_3.9b315493d8e74bb29dcf.png",
+    "static/media/оdesa.jpg": "/static/media/оdesa.0f83f926ac88528f9107.jpg",
+    "static/media/pes-patron.jpg": "/static/media/pes-patron.8bcbb5261bc423bf06b2.jpg",
+    "static/media/background-settings-page.jpg": "/static/media/background-settings-page.024220b86d50bc8ff202.jpg",
+    "static/media/w200.gif": "/static/media/w200.a92d31c18c5b0a7c9c4b.gif",
+    "static/media/mine.jpg": "/static/media/mine.ff7ed6f8d838b178b46b.jpg",
+    "static/media/win.gif": "/static/media/win.82efa8e1faae652a0d9d.gif",
+    "static/media/logo.jpg": "/static/media/logo.ce45619959c058877a5f.jpg",
+    "static/media/screen_2.jpg": "/static/media/screen_2.dc50b92b3caf724d80dc.jpg",
+    "static/media/кhmelnytskyi.jpg": "/static/media/кhmelnytskyi.3a9b3e2bc23780d75392.jpg",
+    "static/media/background-rules-page.jpg": "/static/media/background-rules-page.55a0910a44def62b1559.jpg",
+    "static/media/screen_7.jpg": "/static/media/screen_7.9a5a186a103c9754e448.jpg",
+    "static/media/mine-icon.png": "/static/media/mine-icon.ad5f5877c8c5476e124a.png",
+    "static/media/background-game-page.jpg": "/static/media/background-game-page.6cee7f77b4f01d8f1560.jpg",
+    "static/media/screen_6.jpg": "/static/media/screen_6.48ac818a790c9ed7a4fd.jpg",
+    "static/media/screen_5.jpg": "/static/media/screen_5.fddabc5d5c4679d2f283.jpg",
+    "static/media/screen_1.jpg": "/static/media/screen_1.40033cd6ca99532a5840.jpg",
+    "static/media/screen_8.jpg": "/static/media/screen_8.fbc08b371bb8ddac50fa.jpg",
+    "static/media/bomb.jpg": "/static/media/bomb.4065123ec0b2a58259ac.jpg",
+    "static/media/gears.svg": "/static/media/gears.f91359409178fe396b853d22ef9df130.svg",
+    "static/media/reactjs_logo.svg": "/static/media/reactjs_logo.4c17d270dd8155c4e1583d2255a03ccb.svg",
+    "static/media/user_manual.svg": "/static/media/user_manual.faf8c5d9a744b3096c342c634c90189a.svg",
+    "static/media/gaming_play.svg": "/static/media/gaming_play.7d30023ec802fbe25dad9e43bbce8668.svg",
+    "static/media/e-mail.svg": "/static/media/e-mail.4d2f29ce5445dd41d3a66b9543d260df.svg",
+    "static/media/house.svg": "/static/media/house.f9732e760cab8f40d3ccc1a0eae872be.svg",
+    "index.html": "/index.html",
+    "main.d17bd4e0.css.map": "/static/css/main.d17bd4e0.css.map",
+    "main.7e3634bc.js.map": "/static/js/main.7e3634bc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d17bd4e0.css",
+    "static/js/main.7e3634bc.js"
+  ]
+}

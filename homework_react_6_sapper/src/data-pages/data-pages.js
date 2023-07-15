@@ -1,8 +1,9 @@
 import imgBomb_1 from '../img/bomb.jpg';
 import imgBomb_2 from '../img/bomb_1.jpg';
-import imgBomb_3 from '../img/mine.jpg'
-import imgBomb_4 from '../img/mine-icon.png'
-export const dataPages =[
+import imgBomb_3 from '../img/mine.jpg';
+import imgBomb_4 from '../img/mine-icon.png';
+
+export  const dataPages =[
     {
         id:'lutsk',
         title:'луцьк',
@@ -13,7 +14,9 @@ export const dataPages =[
 
         infoGame:"Простий рівень гри. Небезпечні ділянки складають приблизно 10%.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:6,maxMines:.1,colSize:4},{numCol:8,maxMines:.1,colSize:4},{numCol:6,maxMines:.1,colSize:4}]
+        
+
+        paramGame:{numCol:8, maxMines:.1, colSize:5, numTerms:8}
     },
     {
         id:'rivne',
@@ -25,7 +28,8 @@ export const dataPages =[
 
         infoGame:"Простий рівень гри. Небезпечні ділянки складають приблизно 10%.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:6,maxMines:.1,colSize:5},{numCol:8,maxMines:.15,colSize:4},{numCol:6,maxMines:.1,colSize:5}]
+
+        paramGame:{numCol:8, maxMines:.1, colSize:5, numTerms:8}
     },
     {
         id:'zhytomyr',
@@ -36,7 +40,7 @@ export const dataPages =[
 
         infoGame:"Простий рівень гри. Небезпечні ділянки складають приблизно 10%.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:8,maxMines:.15,colSize:4},{numCol:6,maxMines:.15,colSize:4},{numCol:8,maxMines:.15,colSize:4}]
+        paramGame:{numCol:8, maxMines:.15, colSize:4, numTerms:8}
     },
     {
         id:'кyiv',
@@ -47,7 +51,7 @@ export const dataPages =[
 
         infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 15%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:8,maxMines:.15,colSize:5},{numCol:8,maxMines:.15,colSize:5},{numCol:6,maxMines:.15,colSize:5}]
+        paramGame:{numCol:10, maxMines:.15, colSize:5, numTerms:10}
     },
     {
         id:'сhernihiv',
@@ -59,7 +63,7 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:10,maxMines:.2,colSize:4},{numCol:10,maxMines:.2,colSize:4}]
+        paramGame:{numCol:15, maxMines:.2, colSize:5, numTerms:15}
     },
     {
         id:'sumy',
@@ -72,7 +76,7 @@ export const dataPages =[
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
         
-        paramGame:[{numCol:15,maxMines:.18,colSize:4}]
+        paramGame: {numCol:15, maxMines:.18, colSize:5, numTerms:15}
     },
     {
         id:'кharkiv',
@@ -84,7 +88,7 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:10,maxMines:.18,colSize:4},{numCol:10,maxMines:.18,colSize:4},{numCol:10,maxMines:.18,colSize:4}]
+        paramGame: {numCol:15, maxMines:.18, colSize:5, numTerms:20}
     },
     {
         id:'luhansk',
@@ -95,7 +99,7 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:15,maxMines:.2,colSize:4}]
+        paramGame: {numCol:15, maxMines:.2, colSize:5, numTerms:30}
     },
     {
         id:'donetsk',
@@ -109,7 +113,7 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:14,maxMines:.2,colSize:5}]
+        paramGame: {numCol:15, maxMines:.2, colSize:5, numTerms:30}
     },
     {
         id:'dnipro',
@@ -120,7 +124,7 @@ export const dataPages =[
 
         infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 15%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:8,maxMines:.12,colSize:5},{numCol:8,maxMines:.12,colSize:5}]
+        paramGame: {numCol:10, maxMines:.12, colSize:5, numTerms:20}
     },
     {
         id:'poltava',
@@ -132,7 +136,7 @@ export const dataPages =[
 
         infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 15%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:8,maxMines:.12,colSize:4},{numCol:8,maxMines:.12,colSize:4},{numCol:8,maxMines:.12,colSize:4}]
+        paramGame: {numCol:10, maxMines:.12, colSize:5, numTerms:20}
     },
     {
         id:'сherkasy',
@@ -143,7 +147,7 @@ export const dataPages =[
 
         infoGame:"Простий рівень гри. Небезпечні ділянки складають приблизно 10%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:6,maxMines:.12,colSize:5},{numCol:6,maxMines:.12,colSize:5},{numCol:6,maxMines:.12,colSize:5}]
+        paramGame: {numCol:8, maxMines:.12, colSize:5, numTerms:10}
     },
     {
         id:'kropyvnytskyi',
@@ -152,9 +156,9 @@ export const dataPages =[
         info:"Кропивницький — місто в Україні. З початком широкомасштабного вторгнення pосії в України у 2022 році, місто почало страждати від ракетних обстрілів російської армії. Зранку 1 березня російські окупанти обстріляли аеродром Канатове поблизу Кропивницького, намагаючись зруйнувати об'єкти інфраструктури. 12 березня російські війська атакували аеродром біля залізничної станції Канатове, внаслідок чого загинуло 7 військових. Зранку 23 липня прилетіло 13 ракет (8 ракет «Калібр» морського базування та 5 ракет Х-22 з літака ТУ-22М3). Ворог обстріляв військовий аеродром та залізничний об'єкт. 19 поранених та 3 загиблих. Повітряні тривоги в Кропивницькому звучали майже щоденно.",
         infoLink:'https://uk.wikipedia.org/wiki/%D0%9A%D1%80%D0%BE%D0%BF%D0%B8%D0%B2%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%B8%D0%B9',
 
-        infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
+        infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 15%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:8,maxMines:.15,colSize:4},{numCol:8,maxMines:.15,colSize:4}]
+        paramGame:{numCol:10, maxMines:.16, colSize:5, numTerms:20}
     },
     {
         id:'vinnitsa',
@@ -165,7 +169,7 @@ export const dataPages =[
 
         infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:8,maxMines:.15,colSize:5},{numCol:8,maxMines:.15,colSize:5}]
+        paramGame: {numCol:10, maxMines:.15, colSize:5, numTerms:20}
     },
 
     {
@@ -177,7 +181,7 @@ export const dataPages =[
 
         infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 15%.",
         img:[imgBomb_1,imgBomb_2],
-        paramGame:[{numCol:8,maxMines:.12,colSize:5},{numCol:8,maxMines:.12,colSize:5}]
+        paramGame: {numCol:10, maxMines:.12, colSize:5, numTerms:20}
     },
 
     {
@@ -191,7 +195,7 @@ export const dataPages =[
 
         infoGame:"Легкий рівень гри. Небезпечні ділянки складають приблизно 10%. Є залишки ракет. Вдалого розмінування!",
         img:[imgBomb_1,imgBomb_1],
-        paramGame:[{numCol:6,maxMines:.15,colSize:5},{numCol:6,maxMines:.15,colSize:5},{numCol:6,maxMines:.15,colSize:5}]
+        paramGame: {numCol:8, maxMines:.15, colSize:5, numTerms:10}
     },
     {
         id:'lviv',
@@ -205,7 +209,7 @@ export const dataPages =[
         infoGame:"Легкий рівень гри. Небезпечні ділянки складають приблизно 10%. Є залишки ракет. Вдалого розмінування!",
 
         img:[imgBomb_1,imgBomb_1],
-        paramGame:[{numCol:6,maxMines:.15,colSize:5},{numCol:6,maxMines:.15,colSize:5},{numCol:6,maxMines:.15,colSize:5}]
+        paramGame: {numCol:8, maxMines:.15, colSize:5, numTerms:10}
     },
     {
         id:'uzhhorod',
@@ -219,7 +223,7 @@ export const dataPages =[
         infoGame:"Легкий рівень гри. Небезпечні ділянки складають приблизно 10%. Є залишки ракет. Вдалого розмінування!",
 
         img:[imgBomb_1,imgBomb_1],
-        paramGame:[{numCol:6,maxMines:.1,colSize:5},{numCol:6,maxMines:.1,colSize:5},{numCol:6,maxMines:.1,colSize:5}]
+        paramGame: {numCol:8,  maxMines:.1, colSize:5, numTerms:8}
     },
     {
         id:'ivano-frankivsk',
@@ -232,7 +236,7 @@ export const dataPages =[
 
         infoGame:"Легкий рівень гри. Небезпечні ділянки складають приблизно 10%. Є залишки ракет. Вдалого розмінування!",
         img:[imgBomb_1,imgBomb_1],
-        paramGame:[{numCol:6,maxMines:.1,colSize:5},{numCol:6,maxMines:.1,colSize:5}]
+        paramGame: {numCol:8, maxMines:.1, colSize:5, numTerms:8}
     },
     {
         id:'сhernivtsi',
@@ -248,7 +252,7 @@ export const dataPages =[
 
         img:[imgBomb_1,imgBomb_1],
 
-        paramGame:[{numCol:6,maxMines:.1,colSize:5},{numCol:6,maxMines:.1,colSize:5}]
+        paramGame: {numCol:8,maxMines:.1,colSize:5, numTerms:8}
     },
     {
         id:'оdesa',
@@ -261,7 +265,7 @@ export const dataPages =[
         infoGame:"Середній рівень гри. Небезпечні ділянки складають приблизно 15%. Є залишки ракет та морські міни. Вдалого розмінування!",
 
         img:[imgBomb_1,imgBomb_4],
-        paramGame:[{numCol:8,maxMines:.15,colSize:5},{numCol:8,maxMines:.15,colSize:5}]
+        paramGame: {numCol:10, maxMines:.15, colSize:5, numTerms:20}
     },
     {
         id:'мykolaiv',
@@ -276,7 +280,7 @@ export const dataPages =[
 
         img:[imgBomb_1,imgBomb_3],
 
-        paramGame:[{numCol:8,maxMines:.15,colSize:5},{numCol:8,maxMines:.15,colSize:5}]
+        paramGame: {numCol:15, maxMines:.15, colSize:5, numTerms:20}
     },
     {
         id:'kherson',
@@ -289,7 +293,7 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:15,maxMines:.18,colSize:5}]
+        paramGame: {numCol:15, maxMines:.18, colSize:5, numTerms:20}
     },
     {
         id:'zaporizhzhia',
@@ -302,7 +306,7 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%. Є залишки ракет та протитанкові міни.",
         img:[imgBomb_1,imgBomb_3],
-        paramGame:[{numCol:15,maxMines:.18,colSize:5}]
+        paramGame: {numCol:15, maxMines:.18, colSize:5, numTerms:25}
     },
     {
         id:'simferopol',
@@ -315,7 +319,13 @@ export const dataPages =[
 
         infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%.",
         img:[imgBomb_3,imgBomb_4],
-        paramGame:[{numCol:15,maxMines:.15,colSize:5}]
+        paramGame: {numCol:15, maxMines:.15, colSize:5, numTerms:25}
     },
-
+    {
+        id:'use-game',
+        title:'Користувацька гра',
+        infoGame:"Складний рівень гри. Небезпечні ділянки складають приблизно 20%.",
+        img:[imgBomb_3,imgBomb_1],
+        paramGame: {numCol:8, maxMines:.15, colSize:5, numTerms:8}
+    },
 ]
