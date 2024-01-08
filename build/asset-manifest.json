@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.d17bd4e0.css",
-    "main.js": "/static/js/main.7e3634bc.js",
+    "main.css": "/static/css/main.2c2629ae.css",
+    "main.js": "/static/js/main.d894656a.js",
     "static/media/map.png": "/static/media/map.71eb894bd1a208edb05e.png",
     "static/media/icon-trophy.gif": "/static/media/icon-trophy.ff0078c2c7cc5e4dd6f9.gif",
     "static/media/screen_4.png": "/static/media/screen_4.d971009ab64098ca4ca3.png",
@@ -12,7 +12,6 @@
     "static/media/w200.gif": "/static/media/w200.a92d31c18c5b0a7c9c4b.gif",
     "static/media/mine.jpg": "/static/media/mine.ff7ed6f8d838b178b46b.jpg",
     "static/media/win.gif": "/static/media/win.82efa8e1faae652a0d9d.gif",
-    "static/media/logo.jpg": "/static/media/logo.ce45619959c058877a5f.jpg",
     "static/media/screen_2.jpg": "/static/media/screen_2.dc50b92b3caf724d80dc.jpg",
     "static/media/кhmelnytskyi.jpg": "/static/media/кhmelnytskyi.3a9b3e2bc23780d75392.jpg",
     "static/media/background-rules-page.jpg": "/static/media/background-rules-page.55a0910a44def62b1559.jpg",
@@ -31,11 +30,11 @@
     "static/media/e-mail.svg": "/static/media/e-mail.4d2f29ce5445dd41d3a66b9543d260df.svg",
     "static/media/house.svg": "/static/media/house.f9732e760cab8f40d3ccc1a0eae872be.svg",
     "index.html": "/index.html",
-    "main.d17bd4e0.css.map": "/static/css/main.d17bd4e0.css.map",
-    "main.7e3634bc.js.map": "/static/js/main.7e3634bc.js.map"
+    "main.2c2629ae.css.map": "/static/css/main.2c2629ae.css.map",
+    "main.d894656a.js.map": "/static/js/main.d894656a.js.map"
   },
   "entrypoints": [
-    "static/css/main.d17bd4e0.css",
-    "static/js/main.7e3634bc.js"
+    "static/css/main.2c2629ae.css",
+    "static/js/main.d894656a.js"
   ]
 }
