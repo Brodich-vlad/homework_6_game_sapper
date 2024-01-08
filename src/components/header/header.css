@@ -17,19 +17,23 @@
 .header__nav-logo{
   font-family: 'Kalam', sans-serif;
   font-style: italic;
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 600;
   text-shadow: 1.2rem 1.2rem 1rem rgba(116, 115, 115, .6); 
+  transition: all .3s;
 }
 .logo_yllow{
   display: inline-block;
   color: yellow;
-  margin-right: .5rem;
+  margin-right: .2rem;
 }
 .logo_blue{
   display: inline-block;
   color: rgb(107, 247, 235);
 } 
+.header__nav-logo:hover{
+    transform: scale(1.1);
+}
 .header__nav-list{
     display: flex;
     align-items: center;
